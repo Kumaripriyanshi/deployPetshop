@@ -8,7 +8,7 @@ import authRoutes from "./Routes/authRoutes.js"
 import categoryRoutes from "./Routes/categoryRoutes.js"
 import petRoutes from "./Routes/petRoutes.js"
 import cartRoutes from "./Routes/cartRoutes.js"
-
+import path from "path"
 
 
 
@@ -43,8 +43,12 @@ app.use("/api/v1/cart",cartRoutes)
 
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
+    app.use(express.static(path.join(__dirname,"./client/build")));
   } 
+
+  app.use("*",function(req,res){
+    res.sendFile(path.join(__dirname,"./client/build/index.html"))
+  })
 
 //PORT
 const PORT=process.env.PORT || 8080;
