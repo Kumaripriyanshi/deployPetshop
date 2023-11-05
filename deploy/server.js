@@ -9,7 +9,7 @@ import categoryRoutes from "./Routes/categoryRoutes.js"
 import petRoutes from "./Routes/petRoutes.js"
 import cartRoutes from "./Routes/cartRoutes.js"
 import path from "path"
-
+import {fileURLToPath} from "url"
 
 
 
@@ -40,6 +40,8 @@ app.use("/api/v1/cart",cartRoutes)
 
 
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 
 if (process.env.NODE_ENV === "production") {
